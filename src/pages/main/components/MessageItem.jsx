@@ -86,7 +86,11 @@ const MessageItem = ({ message, quizId }) => {
         const formData = new FormData();
         formData.append('image', imgRef.current.files[0]);
         formData.append('text', studySentence);
-        return await httpRequest('POST', `/study/quiz/${quizId}/ocr/`, formData);
+        return await httpRequest('POST', `/study/quiz/${quizId}/ocr/`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
     }
 
     const checkWithSTT = async () => {
@@ -99,7 +103,11 @@ const MessageItem = ({ message, quizId }) => {
         const formData = new FormData();
         formData.append('audio', audio);
         formData.append('text', studySentence);
-        return await httpRequest('POST', `/study/quiz/${quizId}/stt/`, formData);
+        return await httpRequest('POST', `/study/quiz/${quizId}/stt/`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
     }
 
     const onRecAudio = () => {
