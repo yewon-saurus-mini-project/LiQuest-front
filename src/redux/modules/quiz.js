@@ -160,7 +160,7 @@ export const importPrevQuiz = (key) => async (dispatch) => {
     }
 }
 
-export default function (state=initialState, action) {
+export default function quizReducer (state=initialState, action) {
     switch (action.type) {
         case CHANGE_AI_TALKING: {
             return {
