@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, } from "@nextui-org/react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import MDEditor from '@uiw/react-md-editor';
 
 function NoticeDetail() {
-  const {noticeId} = useParams();
+  const { noticeId } = useParams();
   const nav = useNavigate();
   const token = sessionStorage.getItem('aivle19_token')
   const loginUser = sessionStorage.getItem('aivle19_username')
@@ -24,13 +24,13 @@ function NoticeDetail() {
             .catch(error => {
                 console.error("공지 불러오기 실패", error);
             });
-    }, []);
+    }, [token, noticeId]);
 
   const onDeleteNoticeHandler = async (e) => {
     e.preventDefault()
     const url = process.env.REACT_APP_API_URL + `/notice/${noticeId}/`;
     try {
-        const response = await axios.delete(url, {
+        await axios.delete(url, {
           headers: {
             'Authorization': `Token ${token}`
         }

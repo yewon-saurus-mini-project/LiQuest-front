@@ -51,7 +51,7 @@ function UpdateNotice() {
     };
 
     try {
-      const response = await axios.put(process.env.REACT_APP_API_URL + `/notice/${noticeId}/`, req, {
+      await axios.put(process.env.REACT_APP_API_URL + `/notice/${noticeId}/`, req, {
         headers: {
           'Authorization': `Token ${token}`,
           'Content-Type': 'application/json',
