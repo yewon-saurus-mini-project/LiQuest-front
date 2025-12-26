@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { MessageItem } from './';
 import { useSelector } from 'react-redux';
 import httpRequest from '../../../network/request';
@@ -9,18 +9,18 @@ const MessageList = ({ scrollRef }) => {
     const messages = useSelector((state) => state.quiz.messages);
     
     useEffect(() => {
+        const updateChatLog = () => {
+            const jsonString = JSON.stringify(messages);
+            const formData = new FormData();
+            formData.append('chat_log', jsonString);
+            httpRequest('PATCH', `/study/quiz/${quizId}/`, formData).catch(error => {
+                console.error(error);
+            });
+        }
+
         if (scrollRef.current) scrollRef.current.scrollIntoView({behavior: "smooth", block: "end"});
         if ((step !== -1) && (step !== 501)) updateChatLog();
-    }, [messages]);
-
-    const updateChatLog = () => {
-        const jsonString = JSON.stringify(messages);
-        const formData = new FormData();
-        formData.append('chat_log', jsonString);
-        httpRequest('PATCH', `/study/quiz/${quizId}/`, formData).catch(error => {
-            console.error(error);
-        });
-    }
+    }, [messages, scrollRef, step, quizId]);
 
     const judgeChatStyle = (message) => {
         if (message.mode === 'reEnter') return 'guide-re-enter';

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -201,7 +201,7 @@ const MessageItem = ({ message, quizId }) => {
         return (
             <form>
                 <label className='' htmlFor='handwriting'>(모든 타입의 이미지 파일이 허용됩니다.)</label>
-                { imgFile && <img src={imgFile} alt='handwriting image' /> }
+                { imgFile && <img src={imgFile} alt='제출된 필기 내용' /> }
                 <br></br>
                 <input
                     className=''
