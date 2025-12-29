@@ -1,5 +1,4 @@
-import style from "./style.css";
-import React, {useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { MessageForm, MessageList } from './components';
@@ -32,11 +31,11 @@ const Main = () => {
             dispatch(changeAiTalking(false));
             dispatch(importPrevQuiz(params.key));
         }
-    }, []);
+    }, [dispatch, params]);
 
     useEffect(() => {
         if (createQuizDidMount) dispatch(createNewQuiz());
-    }, [createQuizDidMount])
+    }, [dispatch, createQuizDidMount]);
 
     return (
         <div className='flex'>
