@@ -1,5 +1,3 @@
-import style from "./style.css";
-import React from 'react';
 import useScrollNextSection from "../../hooks/useScrollNextSection.js";
 import InfoItem from './InfoItem.jsx';
 
@@ -69,7 +67,14 @@ const Developers = () => {
     const DeveloverItem = ({github, image, name, role, message}) => {
         return (
             <div>
-                <a href={github} target="_blank" className="developer-box"><InfoItem Icon={<img src={image} width={180} />} title={name} describe={<><strong>{role}</strong><br/><div className="text-sm text-justify">{message}</div></>} /></a>
+                <a
+                    href={github}
+                    target="_blank"
+                    className="developer-box"
+                    rel="noopener noreferrer"
+                >
+                    <InfoItem Icon={<img src={image} width={180} alt={`개발자 ${name} 프로필`} />} title={name} describe={<><strong>{role}</strong><br/><div className="text-sm text-justify">{message}</div></>} />
+                </a>
                 <p className="speech-bubble">Click and visit my GitHub!</p>
             </div>
         );
