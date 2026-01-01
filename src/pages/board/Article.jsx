@@ -46,7 +46,7 @@ function Article() {
             .catch(error => {
                 console.error("댓글 불러오기 실패", error);
             });
-    }, [postId]);
+    }, [postId, token]);
 
     const fetchComments = async () => {
       try {
@@ -68,7 +68,7 @@ function Article() {
       };
 
       try {
-        const response = await axios.post(process.env.REACT_APP_API_URL + `/board/${postId}/comments/`, req, {
+        await axios.post(process.env.REACT_APP_API_URL + `/board/${postId}/comments/`, req, {
           headers: {
               'Authorization': `Token ${token}`,
               'Content-Type': 'application/json'
@@ -85,7 +85,7 @@ function Article() {
     const onDeleteCommentHandler = async (postId, commentId) => {
       const url = process.env.REACT_APP_API_URL + `/board/${postId}/comments/${commentId}/`;
       try {
-          const response = await axios.delete(url, {
+          await axios.delete(url, {
             headers: {
               'Authorization': `Token ${token}`
           }
@@ -120,7 +120,7 @@ function Article() {
       comment: newComment,
     };
     try {
-        const response = await axios.put(url, req, {
+        await axios.put(url, req, {
           headers: {
             'Authorization': `Token ${token}`,
             'Content-Type': 'application/json'
@@ -137,7 +137,7 @@ function Article() {
     e.preventDefault()
     const url = process.env.REACT_APP_API_URL + `/board/${postId}/`;
     try {
-        const response = await axios.delete(url, {
+        await axios.delete(url, {
           headers: {
             'Authorization': `Token ${token}`
         }

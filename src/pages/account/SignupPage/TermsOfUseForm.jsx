@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import TermsDetails from './Terms';
 import termsOfUseData from './termsOfUseData.json';
 
@@ -10,7 +10,7 @@ const TermsOfUseForm = ({setShowSignupForm}) => {
   const [showModal2, setShowModal2] = useState(false);
   const [confirmation1, setConfirmation1] = useState(false);
   const [confirmation2, setConfirmation2] = useState(false);
-  const [termsOfUse, setTermsOfUse] = useState(termsOfUseData);
+  const termsOfUse = termsOfUseData;
 
   const handleAgreeToTerms = (setAgreed, setShowModal, setConfirmation) => {
     setAgreed((prevAgreed) => !prevAgreed);

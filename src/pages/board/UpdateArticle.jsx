@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Input, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from '@nextui-org/react';
 import MDEditor from '@uiw/react-md-editor';
 import axios from 'axios';
@@ -51,7 +51,7 @@ function UpdateArticle() {
     };
 
     try {
-      const response = await axios.put(process.env.REACT_APP_API_URL + `/board/${postId}/`, req, {
+      await axios.put(process.env.REACT_APP_API_URL + `/board/${postId}/`, req, {
         headers: {
           'Authorization': `Token ${token}`,
           'Content-Type': 'application/json',

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Pagination, getKeyValue, Button, Popover, PopoverTrigger, PopoverContent} from "@nextui-org/react";
@@ -22,7 +22,7 @@ function ArticleList() {
         .catch(error => {
             console.error(error);
         });
-    }, []);
+    }, [token]);
 
     const [page, setPage] = useState(1);
     const rowsPerPage = 10;
