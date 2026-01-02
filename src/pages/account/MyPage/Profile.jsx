@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import {Card, CardHeader, CardBody, Image, Textarea} from "@nextui-org/react";
 import Sidebar2 from '../../../components/SideBar2';
@@ -20,7 +20,7 @@ function Profile() {
         .catch(error => {
             console.error(error);
         });
-    }, []);
+    }, [token]);
 
   return (
     <div>

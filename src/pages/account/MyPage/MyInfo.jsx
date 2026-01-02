@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {Card, CardBody} from "@nextui-org/react";
 import {Input} from "@nextui-org/react";
 import axios from 'axios';
@@ -20,7 +20,7 @@ function MyInfo() {
         .catch(error => {
             console.error(error);
         });
-    }, []);
+    }, [token]);
 
   return (
     <div>

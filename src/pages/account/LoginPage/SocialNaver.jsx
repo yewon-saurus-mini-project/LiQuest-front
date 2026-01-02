@@ -1,4 +1,3 @@
-import React from "react";
 import NaverSymbol from "../../../assets/socialSymbol/NaverSymbol.png";
 
 const SocialNaver = ()=>
@@ -14,7 +13,7 @@ const SocialNaver = ()=>
     return(
     <>
     <button onClick={handleLogin} type='button' className='w-full mt-2 grid grid-cols-[10%_90%] place-items-center p-2 text-white/[0.85] bg-[#03C75A] rounded-xl border border-[#03C75A] hover:text-[#03C75A] hover:bg-white'>       
-        <img width={25} src={NaverSymbol} />
+        <img width={25} src={NaverSymbol} alt="네이버 심볼" />
         <div className="font-normal">네이버 계정으로 로그인</div>
     </button>
     </>

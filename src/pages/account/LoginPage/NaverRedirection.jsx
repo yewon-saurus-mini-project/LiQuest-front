@@ -1,8 +1,8 @@
-import React, {useEffect} from 'react'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-function NaverRedirection({setIsLogin}) {
+function NaverRedirection({ setIsLogin }) {
     const code = new URL(document.location.toString()).searchParams.get('code');
     const state = new URL(document.location.toString()).searchParams.get('state');
     const nav = useNavigate();
@@ -24,7 +24,7 @@ function NaverRedirection({setIsLogin}) {
                     console.error(err.message);
                 }
             })
-    }, []);
+    }, [code, state, nav, setIsLogin]);
   
     return (
         <div className='pt-[63px] h-screen m-auto flex justify-center items-center text-3xl' style={{fontFamily: 'JalnanGothic'}}>

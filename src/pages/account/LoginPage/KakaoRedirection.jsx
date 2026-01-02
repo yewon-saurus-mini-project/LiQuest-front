@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -25,7 +25,7 @@ function KakaoRedirection({setIsLogin}) {
                     console.error(err.message);
                 }
             })
-    }, []);
+    }, [code, nav, setIsLogin]);
   
     return (
         <div className='pt-[63px] h-screen m-auto flex justify-center items-center text-3xl' style={{fontFamily: 'JalnanGothic'}}>
