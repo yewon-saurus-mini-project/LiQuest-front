@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react'
+import { useState, useCallback, useRef, useEffect } from 'react'
 import { useTransition, animated } from '@react-spring/web'
 
 import styles from './styles.module.css'
@@ -35,7 +35,8 @@ function Description() {
   useEffect(() => {
     reset()
     return () => ref.current.forEach(clearTimeout)
-  }, [])
+  }, [reset])
+
   return (
     <div className='w-[50%]'>
         <div className={styles.container_login}>

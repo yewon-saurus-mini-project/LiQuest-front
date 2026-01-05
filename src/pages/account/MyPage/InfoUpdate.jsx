@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Sidebar2 from '../../../components/SideBar2';
@@ -21,7 +21,7 @@ function InfoUpdate() {
         .catch(error => {
             console.error(error);
         });
-    }, []);
+    }, [token]);
 
   
   const [Firstname, setFirstname] = useState(userData !== null ? userData.user.First_name : '');

@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import GoogleSymbol from '../../../assets/socialSymbol/GoogleSymbol.png';
+// import GoogleSymbol from '../../../assets/socialSymbol/GoogleSymbol.png';
 import SocialKakao from './SocialKakao';
 import SocialNaver from './SocialNaver';
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
@@ -55,7 +55,7 @@ function SignupForm() {
 
 
         try {
-          const response = await axios.post(process.env.REACT_APP_API_URL + '/accounts/signup/', req, {
+          await axios.post(process.env.REACT_APP_API_URL + '/accounts/signup/', req, {
             headers: {
                 'Content-Type': 'application/json'
             }
