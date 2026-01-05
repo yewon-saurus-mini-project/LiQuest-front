@@ -1,6 +1,3 @@
-import style from "./style.css";
-import React, {useEffect, useRef, useState} from "react";
-import { useNavigate } from 'react-router-dom';
 import GoToLatestAndQuizList from "./GoToLatestAndQuizList";
 
 import { IoMdLogOut, IoMdLogIn } from "react-icons/io";
@@ -20,10 +17,10 @@ const Sidebar = (props) => {
                         <table className="w-[100%] text-right">
                             <tr>
                                 <td colspan="2">
-                                    <a href="#" onClick={props.onClickLogout} className="flex justify-end hover:text-[var(--color-warning-500)]">
+                                    <button onClick={props.onClickLogout} className="flex justify-end hover:text-[var(--color-warning-500)]">
                                         <IoMdLogOut size={25} />
                                         <span>&nbsp;&nbsp;로그아웃</span>
-                                    </a>
+                                    </button>
                                 </td>
                             </tr>
                             <tr>

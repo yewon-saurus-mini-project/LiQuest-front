@@ -1,6 +1,6 @@
 import './App.css';
 import {NextUIProvider} from "@nextui-org/react";
-import React, { Component, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import NotFound from './NotFound';
 

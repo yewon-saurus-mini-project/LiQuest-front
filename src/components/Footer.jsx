@@ -20,7 +20,11 @@ function Footer(props) {
 
                 {/* Footer 우측 */}
                 <div className="flex justify-end items-center gap-3 md:w-auto w-full">
-                    <a href="https://github.com/yewon-saurus/Aivle_4th_BigProject_team19_LiQuest" target="_blank">
+                    <a
+                        href="https://github.com/yewon-saurus/Aivle_4th_BigProject_team19_LiQuest"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
                         <FaGithub size={30} />
                     </a>
                 </div>

@@ -1,10 +1,8 @@
-import React, {useState} from 'react'
 import termsOfUseData from '../pages/account/SignupPage/termsOfUseData.json'
-import {Modal, ModalContent, ModalBody, useDisclosure} from "@nextui-org/react";
-
+import { Modal, ModalContent, ModalBody, useDisclosure } from "@nextui-org/react";
 
 function TouModal() {
-  const [termsOfUse, setTermsOfUse] = useState(termsOfUseData);
+  const termsOfUse = termsOfUseData;
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
 

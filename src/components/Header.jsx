@@ -1,4 +1,3 @@
-import style from "./style.css";
 import { Sidebar, ConfirmPopup } from "./";
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
@@ -58,7 +57,7 @@ function Header(props) {
                             onClickLogout={onClickLogout} username={username} userrank={userrank} />
                     </div>
                     <a href={process.env.PUBLIC_URL + "/"} className="flex items-center gap-2">
-                        <img className="w-10 h-10" src={process.env.PUBLIC_URL + '/logo192.png'} />
+                        <img className="w-10 h-10" src={process.env.PUBLIC_URL + '/logo192.png'} alt="LiQuest Logo" />
                         <h1 className="text-xl">LiQuest</h1>
                     </a>
                 </div>
@@ -73,7 +72,7 @@ function Header(props) {
                             <a href={process.env.PUBLIC_URL+"/myinfo"} className="hover:text-[var(--color-primary-600)]" >{username} 님</a>
                             {/* <a href="" className="hover:text-[var(--color-primary-600)]" >찬스 --개</a> */}
                             {/* <a href="" className="hover:text-[var(--color-primary-600)]" >포인트 --점</a>  */}
-                            <a href="#" className="flex hover:text-[var(--color-warning-600)]" onClick={onClickLogout}><IoMdLogOut style={{width: '20px', height: 'auto',}} /><span>&nbsp;&nbsp;로그아웃</span></a>
+                            <button className="flex hover:text-[var(--color-warning-600)]" onClick={onClickLogout}><IoMdLogOut style={{width: '20px', height: 'auto',}} /><span>&nbsp;&nbsp;로그아웃</span></button>
                         </div>
                         :
                         <div className="flex items-center gap-[2em]">
