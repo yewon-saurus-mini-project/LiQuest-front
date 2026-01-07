@@ -12,7 +12,7 @@ function NoticeDetail() {
   const [noticeData, setNoticeData] = useState([]);
 
     useEffect(() => {
-        axios.get(process.env.REACT_APP_API_URL + `/notice/${noticeId}/`, {
+        axios.get(import.meta.env.VITE_API_URL + `/notice/${noticeId}/`, {
           headers: {
               'Authorization': `Token ${token}`
           }
@@ -28,7 +28,7 @@ function NoticeDetail() {
 
   const onDeleteNoticeHandler = async (e) => {
     e.preventDefault()
-    const url = process.env.REACT_APP_API_URL + `/notice/${noticeId}/`;
+    const url = import.meta.env.VITE_API_URL + `/notice/${noticeId}/`;
     try {
         await axios.delete(url, {
           headers: {

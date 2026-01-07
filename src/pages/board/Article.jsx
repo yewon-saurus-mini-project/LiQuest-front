@@ -23,7 +23,7 @@ function Article() {
   const [editing, setEditing] = useState({});
 
     useEffect(() => {
-        axios.get(process.env.REACT_APP_API_URL + `/board/${postId}/`, {
+        axios.get(import.meta.env.VITE_API_URL + `/board/${postId}/`, {
           headers: {
               'Authorization': `Token ${token}`
           }
@@ -35,7 +35,7 @@ function Article() {
                 console.error("게시글 불러오기 실패", error);
             });
 
-        axios.get(process.env.REACT_APP_API_URL + `/board/${postId}/comments/`, {
+        axios.get(import.meta.env.VITE_API_URL + `/board/${postId}/comments/`, {
           headers: {
               'Authorization': `Token ${token}`
           }
@@ -50,7 +50,7 @@ function Article() {
 
     const fetchComments = async () => {
       try {
-        const response = await axios.get(process.env.REACT_APP_API_URL + `/board/${postId}/comments/`, {
+        const response = await axios.get(import.meta.env.VITE_API_URL + `/board/${postId}/comments/`, {
           headers: {
               'Authorization': `Token ${token}`
           }
@@ -68,7 +68,7 @@ function Article() {
       };
 
       try {
-        await axios.post(process.env.REACT_APP_API_URL + `/board/${postId}/comments/`, req, {
+        await axios.post(import.meta.env.VITE_API_URL + `/board/${postId}/comments/`, req, {
           headers: {
               'Authorization': `Token ${token}`,
               'Content-Type': 'application/json'
@@ -83,7 +83,7 @@ function Article() {
     }
 
     const onDeleteCommentHandler = async (postId, commentId) => {
-      const url = process.env.REACT_APP_API_URL + `/board/${postId}/comments/${commentId}/`;
+      const url = import.meta.env.VITE_API_URL + `/board/${postId}/comments/${commentId}/`;
       try {
           await axios.delete(url, {
             headers: {
@@ -115,7 +115,7 @@ function Article() {
   };
 
   const onUpdateSubmitHandler = async (postId, commentId) => {
-    const url = process.env.REACT_APP_API_URL + `/board/${postId}/comments/${commentId}/`;
+    const url = import.meta.env.VITE_API_URL + `/board/${postId}/comments/${commentId}/`;
     let req = {
       comment: newComment,
     };
@@ -135,7 +135,7 @@ function Article() {
 
   const onDeleteArticleHandler = async (e) => {
     e.preventDefault()
-    const url = process.env.REACT_APP_API_URL + `/board/${postId}/`;
+    const url = import.meta.env.VITE_API_URL + `/board/${postId}/`;
     try {
         await axios.delete(url, {
           headers: {
@@ -239,7 +239,7 @@ function Article() {
                   name={comment.username}
                   description={new Date(comment.created_at).toLocaleString()}
                   avatarProps= {{
-                    src: process.env.REACT_APP_API_URL + comment.profile_image
+                    src: import.meta.env.VITE_API_URL + comment.profile_image
                   }}
                   style={{ cursor: "pointer" }}
                 />

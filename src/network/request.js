@@ -2,7 +2,7 @@ import axios from "axios";
 
 async function httpRequest(method='GET', url='/', data={}, config={}) {
     let response = null;
-    let requestURL = process.env.REACT_APP_API_URL + url;
+    let requestURL = import.meta.env.VITE_API_URL + url;
 
     const instance = axios.create({
         headers: {

@@ -23,7 +23,7 @@ function LoginForm({setIsLogin}) {
     const onSubmitHandler = (e) => {
         e.preventDefault()
 
-        const url = process.env.REACT_APP_API_URL + "/accounts/login/";
+        const url = import.meta.env.VITE_API_URL + "/accounts/login/";
         const req = {
             'username': Id,
             'password': Password,
@@ -75,7 +75,7 @@ function LoginForm({setIsLogin}) {
 
                 <div className='m-auto mt-2 flex align-middle font-normal'>
                     <span style={{color:'grey'}}>아직 계정이 없으신가요?</span>
-                    <a href={process.env.PUBLIC_URL+"/signup"} className='ml-2 hover:text-[black] text-blue-600 visited:text-purple-600 ...'>회원가입</a>
+                    <a href={import.meta.env.VITE_PUBLIC_URL+"/signup"} className='ml-2 hover:text-[black] text-blue-600 visited:text-purple-600 ...'>회원가입</a>
                 </div>
                 <div className='w-full mt-8'>
                     <SocialKakao />

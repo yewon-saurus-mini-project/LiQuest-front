@@ -9,7 +9,7 @@ function Profile() {
     const token = sessionStorage.getItem('aivle19_token')
 
     useEffect(() => {
-        axios.get(process.env.REACT_APP_API_URL + '/accounts/profile/', {
+        axios.get(import.meta.env.VITE_API_URL + '/accounts/profile/', {
             headers: {
                 'Authorization': `Token ${token}`
             }

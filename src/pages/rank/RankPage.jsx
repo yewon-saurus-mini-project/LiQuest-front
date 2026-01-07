@@ -18,7 +18,7 @@ function RankPage() {
           setPage((prev) => prev + 1);
         }
 
-      const res = await fetch(cursor || process.env.REACT_APP_API_URL + "/rank/", {signal});
+      const res = await fetch(cursor || import.meta.env.VITE_API_URL + "/rank/", {signal});
       let json = await res.json();
       console.log(json);
 

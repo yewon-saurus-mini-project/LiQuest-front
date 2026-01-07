@@ -2,9 +2,9 @@ import NaverSymbol from "../../../assets/socialSymbol/NaverSymbol.png";
 
 const SocialNaver = ()=>
 {
-    const Rest_api_key = process.env.REACT_APP_NAVER_KEY
-    const redirect_uri = process.env.REACT_APP_NAVER_REDIRECT_URL
-    const state = process.env.REACT_APP_NAVER_STATE
+    const Rest_api_key = import.meta.env.VITE_NAVER_KEY
+    const redirect_uri = import.meta.env.VITE_NAVER_REDIRECT_URL
+    const state = import.meta.env.VITE_NAVER_STATE
     // oauth 요청 URL
     const naverURL = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${Rest_api_key}&redirect_uri=${redirect_uri}&state=${state}`;
     const handleLogin = ()=>{

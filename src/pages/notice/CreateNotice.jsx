@@ -27,7 +27,7 @@ function CreateNotice() {
     formData.append('image', files[0]);
 
     try {
-      const response = await axios.post(process.env.REACT_APP_API_URL + '/board/image-upload/', formData, {
+      const response = await axios.post(import.meta.env.VITE_API_URL + '/board/image-upload/', formData, {
         headers: {
           'Authorization': `Token ${token}`,
           'Content-Type': 'multipart/form-data',
@@ -36,7 +36,7 @@ function CreateNotice() {
       const imageUrl = response.data.image_url;
 
       // Append the image URL to the content
-      const newContent = `${content}![Alt text](${process.env.REACT_APP_API_URL + imageUrl})`;
+      const newContent = `${content}![Alt text](${import.meta.env.VITE_API_URL + imageUrl})`;
       setContent(newContent);
     } catch (error) {
       console.error('Image upload error:', error);
@@ -51,7 +51,7 @@ function CreateNotice() {
     };
 
     try {
-      await axios.post(process.env.REACT_APP_API_URL + '/notice/', req, {
+      await axios.post(import.meta.env.VITE_API_URL + '/notice/', req, {
         headers: {
           'Authorization': `Token ${token}`,
           'Content-Type': 'application/json',

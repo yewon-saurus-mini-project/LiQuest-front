@@ -10,7 +10,7 @@ function NaverRedirection({ setIsLogin }) {
     useEffect(() => {
         const config = {"Content-Type": 'application/json'};
         
-        axios.get(process.env.REACT_APP_API_URL + `/accounts/naver/callback/?code=${code}&state=${state}`, config
+        axios.get(import.meta.env.VITE_API_URL + `/accounts/naver/callback/?code=${code}&state=${state}`, config
         )
             .then((res) => {
                 sessionStorage.setItem('aivle19_username', res.data.user.username);

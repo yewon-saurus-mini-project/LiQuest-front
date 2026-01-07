@@ -11,7 +11,7 @@ function ArticleList() {
     const token = sessionStorage.getItem('aivle19_token')
 
     useEffect(() => {
-        axios.get(process.env.REACT_APP_API_URL + '/board/', {
+        axios.get(import.meta.env.VITE_API_URL + '/board/', {
             headers: {
                 'Authorization': `Token ${token}`
             }

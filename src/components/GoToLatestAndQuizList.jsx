@@ -30,7 +30,7 @@ const GoToLatestAndQuizList = () => {
                     새 시작
                 </div>
                 <a className="flex gap-2 text-left bg-[var(--color-primary-100)] hover:bg-[var(--color-primary-200)] w-full rounded-full lg:my-0 px-6 py-3 text-[var(--color-primary-500)]"
-                    href={process.env.PUBLIC_URL + "/"}>
+                    href={import.meta.env.VITE_PUBLIC_URL + "/"}>
                     <IoCreateOutline size={25} />
                     <span className="truncate">새 문제 시작하기</span>
                 </a>
