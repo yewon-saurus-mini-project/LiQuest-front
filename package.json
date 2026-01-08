@@ -1,6 +1,7 @@
 {
   "homepage": "https://yewon-saurus.github.io/Aivle_BigProjectFE_19/",
   "name": "liquest",
+  "type": "module",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
