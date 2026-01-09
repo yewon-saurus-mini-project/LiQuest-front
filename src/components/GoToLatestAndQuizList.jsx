@@ -4,8 +4,8 @@ import httpRequest from "../network/request";
 
 import { IoCreateOutline, IoRefresh } from "react-icons/io5";
 
-const GoToLatestAndQuizList = () => {
-    const [quizlist, setQuizlist] = useState([]);
+const GoToLatestAndQuizList = ({ initialQuizList = [] }) => {
+    const [quizlist, setQuizlist] = useState(initialQuizList);
 
     useEffect(() => {
         callQuizHistory();
@@ -45,10 +45,10 @@ const GoToLatestAndQuizList = () => {
                         <IoRefresh size={25} />
                     </button>
                 </div>
-                <div className="history">
+                <div className="h-[calc(100vh-440px)] overflow-y-scroll lg:h-[calc(100vh-224px)]">
                     {
-                        quizlist.map((ele, idx) =>
-                            <QuizItem key={'quiz_item_' + idx} data={ele} />
+                        quizlist.map((data) =>
+                            <QuizItem key={'quiz_item_' + data.quiz_id} data={data} />
                         )
                     }
                 </div>
