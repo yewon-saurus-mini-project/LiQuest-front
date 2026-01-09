@@ -1,4 +1,9 @@
-function ConfirmPopup({ onOpenAlert, onConfirm, title, message }) {
+function ConfirmPopup({
+    onOpenAlert,
+    onConfirm,
+    title,
+    message
+}) {
     const onClickConfirm = () => {
         onOpenAlert();
         onConfirm();

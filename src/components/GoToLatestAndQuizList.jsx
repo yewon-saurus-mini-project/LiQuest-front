@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import QuizItem from "./QuizItem";
 import httpRequest from "../network/request";
 

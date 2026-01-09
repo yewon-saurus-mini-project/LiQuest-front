@@ -2,7 +2,7 @@ import { FaGithub } from "react-icons/fa";
 import PrivacyModal from "./PrivacyModal";
 import TouModal from "./TouModal";
 
-function Footer(props) {
+function Footer() {
     return (
         <div className={`w-full flex justify-center mt-auto`}>
             <div className="w-[90%] flex justify-between items-center py-4
@@ -11,7 +11,6 @@ function Footer(props) {
                 <div className="flex md:justify-start justify-between gap-2 items-center text-start text-xs md:w-auto w-full">
                     <div>
                         <p>&copy; AIVLE 4기 빅프로젝트 19조</p>
-                        {/* <span style={{fontWeight:'bold', paddingRight: '10px'}}>개인정보 처리방침</span> */}
                         <PrivacyModal />
                         <TouModal />
                     </div>
