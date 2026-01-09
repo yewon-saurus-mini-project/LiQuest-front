@@ -63,7 +63,7 @@ function Header({
                             width={SIDEBAR_WIDTH}
                             isLogin={isLogin}
                             isOpen={isOpen}
-                            setOpen={setOpen}
+                            onClose={toggleMenu}
                             setX={setX}
                             xPosition={xPosition}
                             onClickLogout={onClickLogout}

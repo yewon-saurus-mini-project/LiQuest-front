@@ -7,8 +7,8 @@ import { FaRankingStar } from "react-icons/fa6";
 import { GoCommentDiscussion } from "react-icons/go";
 import { MdDeveloperMode, MdOutlineNotificationImportant  } from "react-icons/md";
 
-const StyledLink = ({ to, icon: Icon, label, color = "hover:text-[var(--color-primary-500)]"}) => (
-    <Link to={to} className={`flex justify-end ${color}`}>
+const StyledLink = ({ to, icon: Icon, label, color = "hover:text-[var(--color-primary-500)]", onClose }) => (
+    <Link to={to} onClick={onClose} className={`flex justify-end ${color}`}>
         <Icon size={25} />
         <span>&nbsp;&nbsp;{label}</span>
     </Link>
@@ -42,18 +42,18 @@ const Sidebar = (props) => {
     };
 
     const renderMenu = (items) => (
-        <div className="w-full text-right flex flex-col gap-1">
+        <div className="w-full text-right flex flex-col gap-1" onClick={(e) => e.stopPropagation()}>
             {items.map((item, idx) => item.position === 'solo' ? (
                 <div key={idx} className="flex justify-end gap-0">
                     <div className="p-2 w-full">
                         {item.content.type === 'button' ? (
-                            <button onClick={item.content.onClick} className={`flex justify-end w-full ${item.content.color}`}>
+                            <button onClick={() => { item.content.onClick(); props.onClose(); }} className={`flex justify-end w-full ${item.content.color}`}>
                                 <item.content.icon size={25} />
                                 <span>&nbsp;&nbsp;{item.content.label}</span>
                             </button>
                         ) : (
                             <>
-                                <Link to={item.content.to} className={`flex justify-end ${item.content.color}`}>
+                                <Link to={item.content.to} onClick={props.onClose} className={`flex justify-end ${item.content.color}`}>
                                     <item.content.icon size={25} />
                                     <span>&nbsp;&nbsp;{item.content.label}</span>
                                 </Link>
@@ -71,7 +71,7 @@ const Sidebar = (props) => {
                 <div key={idx} className="flex justify-end gap-0">
                     {item.items.map((link, lidx) => (
                         <NavItem key={lidx}>
-                            <StyledLink to={link.to} icon={link.icon} label={link.label} color={link.color} />
+                            <StyledLink to={link.to} icon={link.icon} label={link.label} color={link.color} onClose={props.onClose} />
                         </NavItem>
                     ))}
                 </div>
@@ -81,16 +81,22 @@ const Sidebar = (props) => {
 
     return (
         <div
-            ref={props.side}
-            className={`bg-white fixed top-0 bottom-0 left-0 transition-all h-full -z-10 ${props.isOpen === true? 'drop-shadow-[25px_25px_100px_var(--color-primary-900)]' : 'drop-shadow-none'}`}
-            style={{ width: `${props.width}px`, height: '100%',  transform: `translatex(${-props.xPosition}px)`}}
+            className={`fixed inset-0 transition-all ${props.isOpen ? 'bg-black/30' : 'bg-transparent pointer-events-none'}`}
+            onClick={props.onClose}
         >
-            <div className="h-screen w-full relative py-16">
-                <div className="lg:hidden">
-                    {renderMenu(props.isLogin ? menuItems.loggedIn : menuItems.loggedOut)}
-                </div>
-                <div>
-                    { props.isLogin && <GoToLatestAndQuizList /> }
+            <div
+                ref={props.side}
+                className={`bg-white fixed top-0 bottom-0 left-0 h-full transition-all pointer-events-auto`}
+                style={{ width: `${props.width}px`, transform: `translatex(${-props.xPosition}px)`}}
+                onClick={(e) => e.stopPropagation()}
+            >
+                <div className="h-screen w-full relative py-16">
+                    <div className="lg:hidden">
+                        {renderMenu(props.isLogin ? menuItems.loggedIn : menuItems.loggedOut)}
+                    </div>
+                    <div>
+                        { props.isLogin && <GoToLatestAndQuizList /> }
+                    </div>
                 </div>
             </div>
         </div>
