@@ -1,7 +1,7 @@
 import GoToLatestAndQuizList from "./GoToLatestAndQuizList";
 import { Link } from "react-router-dom";
 
-import { IoMdLogOut, IoMdLogIn } from "react-icons/io";
+import { IoMdLogOut, IoMdLogIn, IoMdClose } from "react-icons/io";
 import { CiUser } from "react-icons/ci";
 import { FaRankingStar } from "react-icons/fa6";
 import { GoCommentDiscussion } from "react-icons/go";
@@ -91,6 +91,15 @@ const Sidebar = (props) => {
                 onClick={(e) => e.stopPropagation()}
             >
                 <div className="h-screen w-full relative py-16">
+                    {/* 닫기 버튼 */}
+                    <button
+                        onClick={props.onClose}
+                        className="absolute top-3 right-3 p-1 hover:bg-gray-100 rounded-full transition-colors"
+                        aria-label="메뉴 닫기"
+                    >
+                        <IoMdClose size={30} color="var(--color-primary-600)" />
+                    </button>
+
                     <div className="lg:hidden">
                         {renderMenu(props.isLogin ? menuItems.loggedIn : menuItems.loggedOut)}
                     </div>
