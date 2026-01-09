@@ -40,7 +40,7 @@ function Header({
     }
 
     return (
-        <div style={{ fontFamily:'JalnanGothic' }} className="w-full flex justify-center bg-white z-50 top-0 fixed">
+        <div className="w-full flex justify-center bg-white z-50 top-0 fixed">
             {
                 logoutPopup.open &&
                 <ConfirmPopup
@@ -59,8 +59,17 @@ function Header({
                                 <LuMenu size={30} color="var(--color-primary-600)" />
                             </button>
                         </div>
-                        <Sidebar width={SIDEBAR_WIDTH} isLogin={isLogin} isOpen={isOpen} setOpen={setOpen} setX={setX} xPosition={xPosition}
-                            onClickLogout={onClickLogout} username={username} userrank={userrank} />
+                        <Sidebar
+                            width={SIDEBAR_WIDTH}
+                            isLogin={isLogin}
+                            isOpen={isOpen}
+                            setOpen={setOpen}
+                            setX={setX}
+                            xPosition={xPosition}
+                            onClickLogout={onClickLogout}
+                            username={username}
+                            userrank={userrank}
+                        />
                     </div>
                     <a href={import.meta.env.VITE_PUBLIC_URL + "/"} className="flex items-center gap-2">
                         <img className="w-10 h-10" src={import.meta.env.VITE_PUBLIC_URL + '/logo192.png'} alt="LiQuest Logo" />
