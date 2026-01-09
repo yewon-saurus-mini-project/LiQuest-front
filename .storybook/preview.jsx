@@ -1,3 +1,4 @@
+import { BrowserRouter } from 'react-router-dom';
 import '../src/index.css'
 
 /** @type { import('@storybook/react-vite').Preview } */
@@ -18,5 +19,14 @@ const preview = {
     }
   },
 };
+
+export const decorators = [
+  (Story) => (
+    <BrowserRouter>
+      <Story />
+    </BrowserRouter>
+  ),
+];
+
 
 export default preview;
