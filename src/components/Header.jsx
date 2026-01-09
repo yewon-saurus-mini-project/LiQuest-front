@@ -1,24 +1,22 @@
 import { Sidebar, ConfirmPopup } from "./";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
 import { LuMenu } from "react-icons/lu";
 import { IoMdLogOut } from "react-icons/io";
 
-function Header(props) {
+function Header({
+    isLogin,
+    setIsLogin,
+    username
+}) {
     const nav = useNavigate();
 
     const SIDEBAR_WIDTH = 320;
-    const [username, setUsername] = useState('');
     const [userrank, setUserrank] = useState(0);
     const [isOpen, setOpen] = useState(false);
     const [xPosition, setX] = useState(SIDEBAR_WIDTH);
     const [logoutPopup, setLogoutPopup] = useState({ open: false, title: "", message: "" }); // 로그아웃 팝업
-
-    useEffect(() => {
-        const usernameTmp = sessionStorage.getItem('aivle19_username');
-        setUsername(usernameTmp);
-    }, [props.isLogin]);
     
     // button 클릭 시 토글
     const toggleMenu = () => {
@@ -37,7 +35,7 @@ function Header(props) {
     const handleConfirm = () => {
         sessionStorage.removeItem('aivle19_username');
         sessionStorage.removeItem('aivle19_token');
-        props.setIsLogin(false);
+        setIsLogin(false);
         nav('/');
     }
 
@@ -53,7 +51,7 @@ function Header(props) {
                                 <LuMenu size={30} color="var(--color-primary-600)" />
                             </button>
                         </div>
-                        <Sidebar width={SIDEBAR_WIDTH} isLogin={props.isLogin} isOpen={isOpen} setOpen={setOpen} setX={setX} xPosition={xPosition}
+                        <Sidebar width={SIDEBAR_WIDTH} isLogin={isLogin} isOpen={isOpen} setOpen={setOpen} setX={setX} xPosition={xPosition}
                             onClickLogout={onClickLogout} username={username} userrank={userrank} />
                     </div>
                     <a href={import.meta.env.VITE_PUBLIC_URL + "/"} className="flex items-center gap-2">
@@ -63,7 +61,7 @@ function Header(props) {
                 </div>
                 <div className="lg:flex hidden">
                     {
-                        props.isLogin ?
+                        isLogin ?
                         <div className="flex items-center gap-[2em]">
                             <a href={import.meta.env.VITE_PUBLIC_URL+"/we"} className="text-[var(--color-primary-900)] hover:text-[var(--color-primary-600)]" >개발팀 소개</a>
                             <a href={import.meta.env.VITE_PUBLIC_URL+"/notice"} className="text-[var(--color-danger-500)] hover:text-[var(--color-primary-600)]" >공지사항</a>

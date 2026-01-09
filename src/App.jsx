@@ -21,24 +21,24 @@ import NaverRedirection from './pages/account/LoginPage/NaverRedirection';
 import Developers from './pages/info/Developers';
 import Notice from './pages/notice';
 
-
 function App() {
+  const username = sessionStorage.aivle19_username;
   const [isLogin, setIsLogin] = useState(false);
 
   useEffect(() => {
-    if (sessionStorage.aivle19_username !== undefined) {
+    if (username !== undefined) {
       setIsLogin(true);
     }
     else {
       setIsLogin(false);
     }
-  }, [isLogin]);
+  }, []);
 
   return (
     <div className="App">
       <NextUIProvider>
       <BrowserRouter>
-        <Header isLogin={isLogin} setIsLogin={setIsLogin} />
+        <Header isLogin={isLogin} setIsLogin={setIsLogin} username={username} />
 
         <Routes>
           {/* 로그인 O -> Main, 로그인 X -> Info(소개페이지) */}
