@@ -5,17 +5,17 @@ import { IoMdLogOut, IoMdLogIn, IoMdClose } from "react-icons/io";
 import { CiUser } from "react-icons/ci";
 import { FaRankingStar } from "react-icons/fa6";
 import { GoCommentDiscussion } from "react-icons/go";
-import { MdDeveloperMode, MdOutlineNotificationImportant  } from "react-icons/md";
+import { MdDeveloperMode, MdOutlineNotificationImportant } from "react-icons/md";
 
-const StyledLink = ({ to, icon: Icon, label, color = "hover:text-[var(--color-primary-500)]", onClose }) => (
+const StyledLink = ({ to, onClose, icon: Icon, label, color = "hover:text-[var(--color-primary-500)]" }) => (
     <Link to={to} onClick={onClose} className={`flex justify-end ${color}`}>
         <Icon size={25} />
         <span>&nbsp;&nbsp;{label}</span>
     </Link>
 );
 
-const NavItem = ({ children, full = false }) => (
-    <div className={`p-2 ${full ? '' : 'flex-1'}`}>
+const NavItem = ({ children }) => (
+    <div className="p-2 flex-1">
         {children}
     </div>
 );
@@ -71,7 +71,7 @@ const Sidebar = (props) => {
                 <div key={idx} className="flex justify-end gap-0">
                     {item.items.map((link, lidx) => (
                         <NavItem key={lidx}>
-                            <StyledLink to={link.to} icon={link.icon} label={link.label} color={link.color} onClose={props.onClose} />
+                            <StyledLink to={link.to} onClose={props.onClose} icon={link.icon} label={link.label} color={link.color} />
                         </NavItem>
                     ))}
                 </div>
