@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: "robotoMedium";
+    font-style: normal;
+    font-weight: 100;
+    src: url("../../../assets/fonts/Roboto-Medium.ttf");
+  }
+
 :root {
   --color-primary-100: #DCE8FE;
   --color-primary-200: #BAD0FE;
