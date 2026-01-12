@@ -1,8 +1,6 @@
 import { useState, useCallback, useRef, useEffect } from 'react'
 import { useTransition, animated } from '@react-spring/web'
 
-import styles from './styles.module.css'
-
 function Description() {
   const ref = useRef([])
   const [items, set] = useState([])
@@ -39,10 +37,14 @@ function Description() {
 
   return (
     <div className='w-[50%]'>
-        <div className={styles.container_login}>
-          <div className={styles.main_login}>
+        <div className="flex items-center h-full justify-center">
+          <div className="min-w-24 pr-[20px] mx-auto h-[260px]">
             {transitions((animationStyles, item) => (
-              <animated.div className={styles.transitionsItem_login} style={animationStyles} onClick={reset}>
+              <animated.div
+                className="overflow-hidden w-full text-white flex justify-start items-center text-[4em] font-extrabold uppercase will-change-auto whitespace-nowrap cursor-pointer leading-[80px]"
+                style={animationStyles}
+                onClick={reset}
+              >
                 <animated.div style={{ overflow: 'hidden', height: animationStyles.innerHeight }}>{item}</animated.div>
               </animated.div>
             ))}
