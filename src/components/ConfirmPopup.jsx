@@ -1,3 +1,5 @@
+import Button from "./Button";
+
 function ConfirmPopup({
     onOpenAlert,
     onConfirm,
@@ -19,12 +21,8 @@ function ConfirmPopup({
                     {message}
                 </div>
                 <div className="flex justify-between items-center w-100 border-t p-4 text-gray-500">
-                    <button onClick={onOpenAlert} className="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded text-black text-lg">
-                        취소
-                    </button>
-                    <button onClick={onClickConfirm} className="bg-[var(--color-primary-500)] hover:bg-[var(--color-warning-500)] transition-colors px-4 py-2 rounded text-white text-lg">
-                        확인
-                    </button>
+                    <Button mode={3} label="취소" handleClick={onOpenAlert} />
+                    <Button mode={0} label="확인" handleClick={onClickConfirm} />
                 </div>
             </div>
         </div >
