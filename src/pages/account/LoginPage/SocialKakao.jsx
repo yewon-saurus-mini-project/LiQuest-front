@@ -1,4 +1,5 @@
 import KakaoLoginSymbol from '../../../assets/socialSymbol/KakaoSymbol.svg';
+import Button from '../../../components/Button';
 
 const SocialKakao = ()=>
 {
@@ -9,13 +10,11 @@ const SocialKakao = ()=>
     const handleLogin = ()=>{
         window.location.href = kakaoURL
     }
-    return(
-    <>
-    <button onClick={handleLogin} type='button' className='w-full mt-2 grid grid-cols-[10%_90%] place-items-center p-2 text-black/[0.85] bg-[#FEE500] rounded-xl border border-[#FEE500] hover:text-[#FEE500] hover:bg-white'>
-        <img src={KakaoLoginSymbol} width={25} fill='#000000' alt='카카오 소셜 로그인' />
-        <div className='font-normal'>카카오 계정으로 로그인</div>
-    </button>
-    </>
+    return (
+        <Button mode="custom" onClick={handleLogin} isLong={true} customStyle="grid grid-cols-[10%_90%] place-items-center !text-black/[0.85] bg-[#FEE500] border-[#FEE500] hover:!text-[#FEE500]">
+            <img src={KakaoLoginSymbol} width={25} fill='#000000' alt='카카오 소셜 로그인' />
+            <div>카카오 계정으로 로그인</div>
+        </Button>
     )
 }
 export default SocialKakao

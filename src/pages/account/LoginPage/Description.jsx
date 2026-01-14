@@ -38,7 +38,10 @@ function Description() {
   return (
     <div className='w-full m-auto'>
         <div className="flex items-center h-full justify-center">
-          <div className="min-w-24 pr-[20px] mx-auto h-[260px]">
+          <div
+            className="min-w-24 pr-[20px] mx-auto h-[260px]"
+            style={{ fontFamily:'JalnanGothic' }}
+          >
             {transitions((animationStyles, item) => (
               <animated.div
                 className="overflow-hidden w-full text-white flex justify-start items-center text-[4em] font-extrabold uppercase will-change-auto whitespace-nowrap cursor-pointer leading-[80px]"

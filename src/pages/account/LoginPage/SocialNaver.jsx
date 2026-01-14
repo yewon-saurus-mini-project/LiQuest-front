@@ -1,4 +1,5 @@
 import NaverSymbol from "../../../assets/socialSymbol/NaverSymbol.png";
+import Button from "../../../components/Button";
 
 const SocialNaver = ()=>
 {
@@ -10,13 +11,11 @@ const SocialNaver = ()=>
     const handleLogin = ()=>{
         window.location.href = naverURL;
     }
-    return(
-    <>
-    <button onClick={handleLogin} type='button' className='w-full mt-2 grid grid-cols-[10%_90%] place-items-center p-2 text-white/[0.85] bg-[#03C75A] rounded-xl border border-[#03C75A] hover:text-[#03C75A] hover:bg-white'>       
-        <img width={25} src={NaverSymbol} alt="네이버 심볼" />
-        <div className="font-normal">네이버 계정으로 로그인</div>
-    </button>
-    </>
+    return (
+        <Button mode="custom" onClick={handleLogin} isLong={true} customStyle="grid grid-cols-[10%_90%] place-items-center !text-white/[0.85] bg-[#03C75A] border-[#03C75A] hover:!text-[#03C75A]">
+            <img width={25} src={NaverSymbol} alt="네이버 심볼" />
+            <div>네이버 계정으로 로그인</div>
+        </Button>
     )
 }
 
