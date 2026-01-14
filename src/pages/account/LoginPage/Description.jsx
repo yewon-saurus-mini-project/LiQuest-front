@@ -36,7 +36,7 @@ function Description() {
   }, [reset])
 
   return (
-    <div className='w-full m-auto'>
+    <div className='w-full m-auto md:block hidden'>
         <div className="flex items-center h-full justify-center">
           <div
             className="min-w-24 pr-[20px] mx-auto h-[260px]"

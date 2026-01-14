@@ -1,7 +1,5 @@
-import React from 'react'
 import LoginForm from './LoginForm'
 import Description from './Description'
-
 
 function LoginPage({setIsLogin}) {
   return (

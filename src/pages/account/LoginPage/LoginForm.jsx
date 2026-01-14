@@ -47,10 +47,10 @@ function LoginForm({setIsLogin}) {
 
     return (
         <div style={{ alignItems: 'center', justifyContent: 'center', display:'flex', flexDirection:'column' }}
-            className='lg:w-[50%] w-full p-2 m-auto'
+            className='w-full m-auto p-2'
         >
-            <h3 className='text-2xl'>환영합니다!</h3>
-            <h3 className='text-2xl'>귀하의 계정에 로그인하십시오.</h3>
+            <h3 className='md:text-2xl text-xl'>환영합니다!</h3>
+            <h3 className='md:text-2xl text-xl'>귀하의 계정에 로그인하십시오.</h3>
             
             <form className="flex flex-col w-full max-w-sm mt-10">
               <div className="w-full">
