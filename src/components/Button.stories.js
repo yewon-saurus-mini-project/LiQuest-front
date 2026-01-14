@@ -6,13 +6,14 @@ export default {
   title: 'Components/Button',
   component: Button,
   parameters: {
-    layout: 'centered',
+    layout: 'padded',
   },
   tags: ['autodocs'],
   args: {
     mode: 0,
     label: "버튼",
     handleClick: fn(),
+    isLong: false,
   },
 };
 
@@ -38,3 +39,9 @@ export const Cancle = {
     label: "취소",
   }
 };
+
+export const Long = {
+  args: {
+    isLong: true,
+  }
+}
