@@ -10,9 +10,9 @@ export default {
   },
   tags: ['autodocs'],
   args: {
-    mode: 0,
-    label: "버튼",
-    handleClick: fn(),
+    children: "버튼",
+    mode: "primary",
+    onClick: fn(),
     isLong: false,
   },
 };
@@ -21,22 +21,22 @@ export const Primary = {};
 
 export const Warning = {
   args: {
-    mode: 1,
-    label: "경고",
+    children: "경고",
+    mode: "warning",
   }
 };
 
 export const Danger = {
   args: {
-    mode: 2,
-    label: "위험",
+    children: "위험",
+    mode: "danger",
   }
 };
 
 export const Cancle = {
   args: {
-    mode: 3,
-    label: "취소",
+    children: "취소",
+    mode: "cancle",
   }
 };
 

@@ -21,8 +21,8 @@ function ConfirmPopup({
                     {message}
                 </div>
                 <div className="flex justify-between items-center w-100 border-t p-4 text-gray-500">
-                    <Button mode={3} label="취소" handleClick={onOpenAlert} />
-                    <Button mode={0} label="확인" handleClick={onClickConfirm} />
+                    <Button mode="cancle" onClick={onOpenAlert}>취소</Button>
+                    <Button mode="primary"onClick={onClickConfirm}>확인</Button>
                 </div>
             </div>
         </div >
