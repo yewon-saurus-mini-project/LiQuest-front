@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
+import styles from "./style.module.css";
 
 const InfoItem = ({Icon, title, describe}) => {
     const infoItemContainerRef = useRef();
@@ -18,7 +19,7 @@ const InfoItem = ({Icon, title, describe}) => {
 
     return (
         <div ref={infoItemContainerRef} onMouseMove={handleMouseMoveInfoItem} onMouseOut={handleMouseOutInfoItem}
-            className="w-[270px] h-[480px] bg-white rounded-2xl text-center px-4 py-8 flex flex-col justify-center items-center ani-pulse hover:animate-none duration-700"
+            className={`w-[270px] h-[480px] bg-white rounded-2xl text-center px-4 py-8 flex flex-col justify-center items-center ${styles["ani-pulse"]} hover:animate-none duration-700`}
         >
             {Icon}
             <div className="text-2xl font-bold mt-6 mb-2">{title}</div>

@@ -1,5 +1,6 @@
 import useScrollNextSection from "../../hooks/useScrollNextSection.js";
 import InfoItem from './InfoItem.jsx';
+import styles from "./style.module.css";
 
 import Developer1 from "./developersProfile/Kiruchoco.jpg";
 import Developer2 from "./developersProfile/mingweon.png";
@@ -70,19 +71,19 @@ const Developers = () => {
                 <a
                     href={github}
                     target="_blank"
-                    className="developer-box"
+                    className={styles["developer-box"]}
                     rel="noopener noreferrer"
                 >
                     <InfoItem Icon={<img src={image} width={180} alt={`개발자 ${name} 프로필`} />} title={name} describe={<><strong>{role}</strong><br/><div className="text-sm text-justify">{message}</div></>} />
                 </a>
-                <p className="speech-bubble">Click and visit my GitHub!</p>
+                <p className={styles["speech-bubble"]}>Click and visit my GitHub!</p>
             </div>
         );
     }
 
     return (
         <div>
-            <div className='section w-full min-h-[100vh] flex justify-center items-center lg:gap-32 pt-[63px] bg-[var(--color-primary-500)]'>
+            <div className={`section bg-[var(--color-primary-500)] ${styles["section"]}`}>
                 <div className="text-white lg:p-0 px-4 py-10">
                     <div className='mt-10 w-full text-justify'>
                         <div className='text-white introduce'>
@@ -93,7 +94,7 @@ const Developers = () => {
                     </div>
                 </div>
             </div>
-            <div className='section w-full min-h-[100vh] flex flex-col lg:flex-row justify-center items-center lg:gap-32 bg-[var(--color-primary-400)] py-10'>
+            <div className={`section bg-[var(--color-primary-400)] ${styles["section"]}`}>
                 <div className="text-white lg:p-0 px-4">
                 </div>
                 <div className='min-w-[50vh] min-h-[100vh] flex flex-col lg:flex-row justify-center items-center lg:gap-20 gap-5'>
@@ -105,7 +106,7 @@ const Developers = () => {
                     </div>
                 </div>
             </div>
-            <div className='section w-full min-h-[100vh] flex flex-col lg:flex-row justify-center items-center lg:gap-32 bg-[var(--color-primary-500)] py-10'>
+            <div className={`section bg-[var(--color-primary-500)] ${styles["section"]}`}>
                 <div className='text-white introduce'>
                 </div>
                 <div className='min-w-[50vh] min-h-[50vh] flex flex-col lg:flex-row justify-center items-center lg:gap-20 gap-5'>
@@ -117,7 +118,7 @@ const Developers = () => {
                     <DeveloverItem github={developers[3].github} image={developers[3].image} name={developers[3].name} role={developers[3].role} message={developers[3].message} />
                 </div>
             </div>
-            <div className='section w-full min-h-[100vh] flex flex-col lg:flex-row justify-center items-center lg:gap-32 bg-[var(--color-primary-400)] py-10'>
+            <div className={`section bg-[var(--color-primary-400)] ${styles["section"]}`}>
             <div className='text-white introduce'>
                 </div>
                 <div className='min-w-[50vh] min-h-[50vh] flex flex-col lg:flex-row justify-center items-center lg:gap-20 gap-5'>

@@ -1,17 +1,17 @@
-@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
-.notosanskr * { 
-    font-family: 'Noto Sans KR', sans-serif;
-}
-
-@font-face {
-    font-family: 'JalnanGothic';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/JalnanGothic.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
 .section {
     font-family: 'Noto Sans KR', sans-serif;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 63px;
+}
+
+@media (min-width: 1024px) {
+    .section {
+        gap: 8rem;
+    }
 }
 
 .introduce {

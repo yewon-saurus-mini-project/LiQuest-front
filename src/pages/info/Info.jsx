@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useScrollNextSection from "../../hooks/useScrollNextSection.js";
 import InfoItem from './InfoItem.jsx';
+import styles from "./style.module.css";
 
 import { MdOutlineQuiz } from "react-icons/md";
 import { SiFuturelearn } from "react-icons/si";
@@ -36,7 +37,7 @@ const Info = () => {
         <div>
             <div className='section w-full min-h-[100vh] flex justify-center items-center lg:gap-32 pt-[63px] bg-[var(--color-primary-500)]'>
                 <div className="text-white lg:p-0 px-4 py-10">
-                    <div className='introduce'>
+                    <div className={styles['introduce']}>
                         <div className="lg:text-6xl text-4xl">LiQuest,</div>
                         <div className="lg:text-4xl text-2xl lg:mt-4">문해력을 깨우는 모험의 시작!</div>
                         <div className="lg:text-4xl text-2xl lg:mt-4">말하고, 듣고, 쓰기를 경험합니다.</div>
@@ -48,14 +49,14 @@ const Info = () => {
                     <button className='text-lg mt-10 py-4 bg-[var(--color-primary-700)] hover:bg-[var(--color-primary-900)] w-[200px] hover:w-full transition-all rounded-full' type='button' onClick={() => {nav('/login');}}>시작하기</button>
                 </div>
                 <div ref={mainImgContainerRef} onMouseMove={handleMouseMoveMainImg} onMouseOut={handleMouseOutMainImg} className='rounded-full transition-all'>
-                    <div className='info-graphic lg:w-[600px] lg:h-[600px] md:w-[400px] rounded-full hover:w-[620px] hover:h-[620px] transition-all' />
+                    <div className={`${styles["info-graphic"]} lg:w-[600px] lg:h-[600px] md:w-[400px] rounded-full hover:w-[620px] hover:h-[620px] transition-all`} />
                     {/* <a className='relative bottom-[4em] text-xs'
                         href="https://kr.freepik.com/free-vector/college-project-concept-illustration_35020245.htm#query=literacy&position=1&from_view=search&track=sph&uuid=a56fde11-07fb-45d7-bc27-b79b331cc0c1">출처 Freepik 작가 storyset</a> */}
                 </div>
             </div>
             <div className='section w-full min-h-[100vh] flex flex-col lg:flex-row justify-center items-center lg:gap-32 bg-[var(--color-primary-400)] py-10'>
                 <div className="text-white lg:p-0 px-4">
-                    <div className='introduce'>
+                    <div className={styles['introduce']}>
                         <div className="lg:text-5xl text-2xl"><span className="border-b-3">LiQuest</span>에서</div>
                         <div className="lg:text-5xl text-2xl lg:mt-8 lg:mb-0 mb-8">시작해 보세요.</div>
                     </div>
