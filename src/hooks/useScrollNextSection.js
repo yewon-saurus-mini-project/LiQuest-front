@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import throttle from "../utils/throttle";
 
 export default function useScrollNextSection() {
     useEffect(() => {
@@ -40,12 +41,14 @@ export default function useScrollNextSection() {
             window.scrollTo({ top: moveTop, left: 0, behavior: 'smooth' });
         };
 
+        const throttledWheel = throttle(handleWheel, 1000);
+
         // 문서에 wheel 이벤트 리스너를 추가
-        document.addEventListener('wheel', handleWheel);
+        document.addEventListener('wheel', throttledWheel);
 
         // 컴포넌트가 언마운트될 때 이벤트 리스너를 제거
         return () => {
-            document.removeEventListener('wheel', handleWheel);
+            document.removeEventListener('wheel', throttledWheel);
         };
     }, []);
 }
