@@ -10,4 +10,4 @@ export default {
   args: {},
 };
 
-export const Primary = {};
+export const Default = {};
