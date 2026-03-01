@@ -2,6 +2,7 @@ import { useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../../components/Button';
+import Input from '../../../components/Input';
 // import GoogleSymbol from '../../../assets/socialSymbol/GoogleSymbol.png';
 import SocialKakao from './SocialKakao';
 import SocialNaver from './SocialNaver';
@@ -53,19 +54,8 @@ function LoginForm({setIsLogin}) {
             <h3 className='md:text-2xl text-xl'>귀하의 계정에 로그인하십시오.</h3>
             
             <form className="flex flex-col w-full max-w-sm mt-10">
-              <div className="w-full">
-                <label className="block uppercase tracking-wide text-gray-700 text-sm mb-2" for='grid-id'>
-                아이디
-                </label>
-                <input value={Id} onChange={onIdHandler} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-id" type="text" placeholder="Your ID" />
-
-              </div>
-                <div className="w-full">
-                  <label className="block uppercase tracking-wide text-gray-700 text-sm mb-2" for="grid-password">
-                  비밀번호
-                  </label>
-                  <input value={Password} onChange={onPasswordHandler} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="password" placeholder="******************" />
-                </div>
+                <Input label='아이디' value={Id} onChange={onIdHandler} type='text' placeholder='Your ID' />
+                <Input label='비밀번호' value={Password} onChange={onPasswordHandler} type='password' placeholder='******************' />
                 <br />
                 <Button mode="primary" onClick={onSubmitHandler} isLong={true}>로그인</Button>
                 {/* {error && <div style={{ color: 'red' }}>{error}</div>} */}
