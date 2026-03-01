@@ -44,7 +44,7 @@ function Header({
             {
                 logoutPopup.open &&
                 <ConfirmPopup
-                    onOpenAlert={onClickLogout}
+                    onClose={onClickLogout}
                     onConfirm={handleConfirm}
                     title={logoutPopup.title}
                     message={logoutPopup.message}

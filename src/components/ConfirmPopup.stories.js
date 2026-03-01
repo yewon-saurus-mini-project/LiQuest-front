@@ -10,8 +10,8 @@ export default {
   },
   tags: ['autodocs'],
   args: {
-    onOpenAlert: fn(),
-    onconfirm: fn(),
+    onClose: fn(),
+    onConfirm: fn(),
     title: "팝업 제목",
     message: "메세지 본문",
   },
