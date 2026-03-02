@@ -3,7 +3,7 @@ const Input = ({
   value,
   onChange,
   type='text',
-  placeholder
+  placeholder=''
 }) => {
   return (
     <div className="w-full">
