@@ -1,7 +1,7 @@
 import Description from './Description';
 
 export default {
-  title: 'Pages/Account/Description',
+  title: 'Pages/Account/LoginPage/Description',
   component: Description,
   parameters: {
     layout: 'fullscreen',

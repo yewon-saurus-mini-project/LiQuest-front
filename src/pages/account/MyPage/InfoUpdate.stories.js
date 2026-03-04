@@ -1,7 +1,7 @@
 import InfoUpdate from './InfoUpdate';
 
 export default {
-  title: 'Pages/MyPage/InfoUpdate',
+  title: 'Pages/Account/MyPage/InfoUpdate',
   component: InfoUpdate,
   parameters: {
     layout: 'fullscreen',

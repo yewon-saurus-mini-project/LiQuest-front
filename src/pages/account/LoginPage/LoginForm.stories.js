@@ -3,7 +3,7 @@ import { fn } from 'storybook/test';
 import LoginForm from './LoginForm';
 
 export default {
-  title: 'Pages/Account/LoginForm',
+  title: 'Pages/Account/LoginPage/LoginForm',
   component: LoginForm,
   parameters: {
     layout: 'fullscreen',
