@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import {Card, CardHeader, CardBody, Image, Textarea} from "@nextui-org/react";
-import Sidebar2 from '../../../components/SideBar2';
-
+import MyPageNav from './MyPageNav';
 
 function Profile() {
     const [userData, setUserData] = useState(null);
@@ -24,7 +23,7 @@ function Profile() {
 
   return (
     <div>
-        <Sidebar2 />
+        <MyPageNav />
         <div className='pt-[63px] min-h-screen' style={{fontFamily:'JalnanGothic', padding:'63px', marginLeft:'256px', marginBottom:'200px', display: 'flex', justifyContent: 'center', position: 'relative', top: '145px'}}>
             <Card className="py-4" style={{ width: '300px', height: '460px'}}>
                 <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">

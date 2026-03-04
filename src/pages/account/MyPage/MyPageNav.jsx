@@ -1,8 +1,7 @@
-import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { MenuIcon } from '@heroicons/react/solid';
 
-function Sidebar2() {
+function MyPageNav() {
     const navigate = useNavigate();
     const location = useLocation();
   
@@ -45,4 +44,4 @@ function Sidebar2() {
     )
 }
 
-export default Sidebar2;
+export default MyPageNav;

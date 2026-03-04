@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Sidebar2, Input } from '../../../components';
+import { Input } from '../../../components';
+import MyPageNav from './MyPageNav';
 
 function MyInfo() {
     const [userData, setUserData] = useState(null);
@@ -22,7 +23,7 @@ function MyInfo() {
 
   return (
     <div>
-        <Sidebar2 />
+        <MyPageNav />
         <div className='pt-[63px] min-h-screen' style={{ padding:'63px', marginLeft:'256px', marginBottom:'200px', display: 'flex', justifyContent: 'center', position: 'relative', top: '145px' }}>
             <div className='w-auto lg:w-1/3'>
                 <Input isReadOnly label='이름' value={userData !== null ? `${userData.user.last_name}${userData.user.first_name}` : 'Loading...'} onChange={() => {}} type='text' />

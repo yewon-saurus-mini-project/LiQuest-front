@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Sidebar2, Button, ConfirmPopup, Input } from '../../../components';
+import { Button, ConfirmPopup, Input } from '../../../components';
+import MyPageNav from './MyPageNav';
 
 function InfoUpdate() {
   const [userData, setUserData] = useState(null);
@@ -86,7 +87,7 @@ function InfoUpdate() {
 
   return (
     <div>
-      <Sidebar2 />
+      <MyPageNav />
       <div className='pt-[63px] min-h-screen' style={{padding:'63px', marginLeft:'256px'}}>
       <form>
         <div className="space-y-12">

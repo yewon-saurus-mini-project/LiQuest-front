@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Sidebar2 from '../../../components/SideBar2'
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@nextui-org/react";
-
+import MyPageNav from './MyPageNav';
 
 function ProfileUpdate() {
     const [userData, setUserData] = useState(null);
@@ -83,7 +82,7 @@ function ProfileUpdate() {
     
   return (
     <div>
-        <Sidebar2 />
+        <MyPageNav />
         <div className='pt-[63px] min-h-screen' style={{padding:'63px', marginLeft:'256px', fontFamily:'JalnanGothic'}}>
             <form encType='multipart/form-data'>
                 <div className="space-y-12">
