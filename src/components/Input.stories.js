@@ -1,21 +1,27 @@
-import { fn } from 'storybook/test';
+import { fn } from "storybook/test";
 
-import Input from './Input';
+import Input from "./Input";
 
 export default {
-  title: 'Components/Input',
+  title: "Components/Input",
   component: Input,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   args: {
     label: "라벨",
     value: "",
     onChange: fn(),
     type: "text",
-    placeholder: "이렇게 입력하세요."
+    placeholder: "이렇게 입력하세요.",
   },
 };
 
-export const Primary = {};
+export const Text = {};
+
+export const Textarea = {
+  args: {
+    type: "textarea",
+  },
+};
