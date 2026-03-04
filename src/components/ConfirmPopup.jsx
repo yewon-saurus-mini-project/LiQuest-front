@@ -1,35 +1,36 @@
 import Button from "./Button";
 import { IoMdClose } from "react-icons/io";
 
-function ConfirmPopup({
-    onClose,
-    onConfirm,
-    title,
-    message
-}) {
-    return (
-        <div className={`popup z-50 h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black/30 text-center`}>
-            <div className="bg-white rounded w-10/12 md:w-1/3">
-                <div className="border-b p-4 flex justify-between items-center">
-                    <h3 className="font-extrabold text-2xl">{title}</h3>
-                    <button
-                        onClick={onClose}
-                        className="hover:bg-gray-100 rounded-full transition-colors"
-                        aria-label="메뉴 닫기"
-                    >
-                        <IoMdClose size={30} color="var(--color-primary-600)" />
-                    </button>
-                </div>
-                <div className="text-gray-800 text-lg px-4 py-8 text-justify">
-                    {message}
-                </div>
-                <div className="flex justify-between items-center w-100 border-t p-4 text-gray-500">
-                    <Button mode="cancle" onClick={onClose}>취소</Button>
-                    <Button mode="primary"onClick={onConfirm}>확인</Button>
-                </div>
-            </div>
+function ConfirmPopup({ onCancle, onConfirm, title, message }) {
+  return (
+    <div
+      className={`popup z-50 h-screen w-full fixed left-0 top-0 flex justify-center items-center bg-black/30 text-center`}
+    >
+      <div className="bg-white rounded w-10/12 md:w-1/3">
+        <div className="border-b p-4 flex justify-between items-center">
+          <h3 className="font-extrabold text-2xl">{title}</h3>
+          <button
+            onClick={onCancle}
+            className="hover:bg-gray-100 rounded-full transition-colors"
+            aria-label="메뉴 닫기"
+          >
+            <IoMdClose size={30} color="var(--color-primary-600)" />
+          </button>
         </div>
-    );
+        <div className="text-gray-800 text-lg px-4 py-8 text-justify">
+          {message}
+        </div>
+        <div className="flex justify-between items-center w-100 border-t p-4 text-gray-500">
+          <Button mode="cancle" onClick={onCancle}>
+            취소
+          </Button>
+          <Button mode="primary" onClick={onConfirm}>
+            확인
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default ConfirmPopup;
