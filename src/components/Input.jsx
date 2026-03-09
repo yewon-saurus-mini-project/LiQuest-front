@@ -5,6 +5,7 @@ const Input = ({ label, value, onChange, type = "text", placeholder = "" }) => {
   const commonProps = {
     value,
     onChange,
+    type,
     placeholder,
     className: baseClass,
   };
