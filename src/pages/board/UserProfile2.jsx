@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import axios from 'axios';
-import { User } from "@nextui-org/react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import UserProfileView from "./UserProfileView";
 
 function UserProfile2({ userId, token, profiles, setProfiles }) {
   const [profile, setProfile] = useState(null);
@@ -10,39 +10,31 @@ function UserProfile2({ userId, token, profiles, setProfiles }) {
       if (profiles[userId]) {
         setProfile(profiles[userId]);
       } else {
-        axios.get(import.meta.env.VITE_API_URL + `/accounts/profile/${userId}/`, {
+        axios
+          .get(import.meta.env.VITE_API_URL + `/accounts/profile/${userId}/`, {
             headers: {
-                'Authorization': `Token ${token}`
-            }
-        })
-        .then(response => {
-            if(response.data) {
-              setProfiles(prevProfiles => ({...prevProfiles, [userId]: response.data}));
+              Authorization: `Token ${token}`,
+            },
+          })
+          .then((response) => {
+            if (response.data) {
+              setProfiles((prevProfiles) => ({
+                ...prevProfiles,
+                [userId]: response.data,
+              }));
               setProfile(response.data);
             }
-        })
-        .catch(error => {
+          })
+          .catch((error) => {
             console.error(error);
-        });
+          });
       }
     };
 
     userProfile(userId);
   }, [userId, token, profiles, setProfiles]);
 
-  if (!profile) {
-    return <div>로딩 중...</div>;
-  }
-
-  return (
-    <User   
-      name={`Level ${profile.profile.user_level}`}
-      description={profile.profile.introduction}
-      avatarProps={{
-        src: `${profile.profile.image}`
-      }}
-    />
-  );
+  return <UserProfileView profile={profile} />;
 }
 
 export default UserProfile2;
