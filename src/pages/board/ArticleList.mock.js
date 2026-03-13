@@ -1,4 +1,4 @@
-export const mockArticleData = [
+export const mockArticleListData = [
   {
     post_id: 2,
     user_id: 2,

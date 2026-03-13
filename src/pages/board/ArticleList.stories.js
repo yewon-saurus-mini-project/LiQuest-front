@@ -1,5 +1,5 @@
 import ArticleList from "./ArticleList";
-import { mockArticleData } from "./ArticleList.mock";
+import { mockArticleListData } from "./ArticleList.mock";
 
 export default {
   title: "pages/Board/ArticleList",
@@ -9,7 +9,7 @@ export default {
   },
   tags: ["autodocs"],
   args: {
-    initialArticleData: mockArticleData,
+    initialArticleData: mockArticleListData,
   },
 };
 
