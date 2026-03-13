@@ -1,16 +1,16 @@
-import { fn } from 'storybook/test';
+import { fn } from "storybook/test";
 
-import { ConfirmPopup } from './';
+import { ConfirmPopup } from "./";
 
 export default {
-  title: 'Components/ConfirmPopup',
+  title: "Components/ConfirmPopup",
   component: ConfirmPopup,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   args: {
-    onClose: fn(),
+    onCancle: fn(),
     onConfirm: fn(),
     title: "팝업 제목",
     message: "메세지 본문",
@@ -20,6 +20,6 @@ export default {
 export const Default = {
   args: {
     title: "로그아웃",
-    message: "로그아웃 하시겠습니까?"
+    message: "로그아웃 하시겠습니까?",
   },
 };
