@@ -1,18 +1,39 @@
-import { useState } from 'react';
-import { Input, Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from '@nextui-org/react';
-import MDEditor from '@uiw/react-md-editor';
-import axios from 'axios';
-import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import { useState } from "react";
+import {
+  Input,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+  useDisclosure,
+} from "@nextui-org/react";
+import MDEditor from "@uiw/react-md-editor";
+import axios from "axios";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import rehypeSanitize from "rehype-sanitize";
 
 function UpdateArticle() {
-  const token = sessionStorage.getItem('aivle19_token');
-  const {postId} = useParams();
+  const token = sessionStorage.getItem("aivle19_token");
+  const { postId } = useParams();
   const location = useLocation();
-  const [title, setTitle] = useState(location.state !== null ? location.state.title : '');
-  const [content, setContent] = useState(location.state !== null ? location.state.content : '');
-  const { isOpen: isCancelOpen, onOpen: onOpenCancel, onOpenChange: onOpenChangeCancel } = useDisclosure();
-  const { isOpen: isSaveOpen, onOpen: onOpenSave, onOpenChange: onOpenChangeSave } = useDisclosure();
+  const [title, setTitle] = useState(
+    location.state !== null ? location.state.title : "",
+  );
+  const [content, setContent] = useState(
+    location.state !== null ? location.state.content : "",
+  );
+  const {
+    isOpen: isCancelOpen,
+    onOpen: onOpenCancel,
+    onOpenChange: onOpenChangeCancel,
+  } = useDisclosure();
+  const {
+    isOpen: isSaveOpen,
+    onOpen: onOpenSave,
+    onOpenChange: onOpenChangeSave,
+  } = useDisclosure();
   const nav = useNavigate();
 
   const onTitleHandler = (e) => {
@@ -25,21 +46,25 @@ function UpdateArticle() {
 
   const onDropHandler = async (files) => {
     const formData = new FormData();
-    formData.append('image', files[0]);
+    formData.append("image", files[0]);
 
     try {
-      const response = await axios.post(import.meta.env.VITE_API_URL + '/board/image-upload/', formData, {
-        headers: {
-          'Authorization': `Token ${token}`,
-          'Content-Type': 'multipart/form-data',
+      const response = await axios.post(
+        import.meta.env.VITE_API_URL + "/board/image-upload/",
+        formData,
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
         },
-      });
+      );
       const imageUrl = response.data.image_url;
 
       const newContent = `${content}![Alt text](${import.meta.env.VITE_API_URL + imageUrl})`;
       setContent(newContent);
     } catch (error) {
-      console.error('Image upload error:', error);
+      console.error("Image upload error:", error);
     }
   };
 
@@ -53,14 +78,14 @@ function UpdateArticle() {
     try {
       await axios.put(import.meta.env.VITE_API_URL + `/board/${postId}/`, req, {
         headers: {
-          'Authorization': `Token ${token}`,
-          'Content-Type': 'application/json',
+          Authorization: `Token ${token}`,
+          "Content-Type": "application/json",
         },
       });
-      console.log('update article successful');
+      console.log("update article successful");
       nav(`/board/${postId}`);
     } catch (error) {
-      console.error('udpate article error:', error);
+      console.error("udpate article error:", error);
     }
   };
 
@@ -69,13 +94,16 @@ function UpdateArticle() {
   };
 
   return (
-    <div data-color-mode="light" style={{ padding: '20px', fontFamily:'JalnanGothic' }}>
-      <div className="w-1/2 flex flex-col gap-4" style={{ paddingBottom: '50px' }}>
+    <div data-color-mode="light" className="p-5">
+      <div
+        className="w-1/2 flex flex-col gap-4"
+        style={{ paddingBottom: "50px" }}
+      >
         <div className="flex w-full flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4">
           <Input
             value={title}
             onChange={onTitleHandler}
-            style={{ fontSize: '35px' }}
+            style={{ fontSize: "35px" }}
             type="text"
             variant="underlined"
             placeholder="제목을 입력하세요"
@@ -83,41 +111,59 @@ function UpdateArticle() {
         </div>
       </div>
 
-      <div onDrop={e => {
-        e.preventDefault();
-        e.stopPropagation();
-        const files = e.dataTransfer.files;
-        if (files && files.length > 0) {
-          onDropHandler(files);
-        }
-      }}>
+      <div
+        onDrop={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const files = e.dataTransfer.files;
+          if (files && files.length > 0) {
+            onDropHandler(files);
+          }
+        }}
+      >
         <MDEditor
           height="60vh"
           value={content}
           onChange={onContentHandler}
-          style={{ whiteSpace: 'pre-wrap' }}
+          style={{ whiteSpace: "pre-wrap" }}
           previewOptions={{
             rehypePlugins: [[rehypeSanitize]],
-          }} 
+          }}
           onDrop={(files) => onDropHandler(files)}
         />
       </div>
 
       <div className="flex flex-wrap gap-4 pt-5 justify-end">
         <>
-          <Button onPress={onOpenCancel} type="button" color="secondary" variant="light">
+          <Button
+            onPress={onOpenCancel}
+            type="button"
+            color="secondary"
+            variant="light"
+          >
             취소
           </Button>
-          <Modal style={{fontFamily:'JalnanGothic'}} isOpen={isCancelOpen} onOpenChange={onOpenChangeCancel} backdrop="Transparent">
+          <Modal
+            isOpen={isCancelOpen}
+            onOpenChange={onOpenChangeCancel}
+            backdrop="Transparent"
+          >
             <ModalContent>
               {(onClose) => (
                 <>
-                  <ModalHeader className="flex flex-col gap-1">글 수정 취소</ModalHeader>
+                  <ModalHeader className="flex flex-col gap-1">
+                    글 수정 취소
+                  </ModalHeader>
                   <ModalBody>
                     <p>글 수정을 취소하시겠습니까?</p>
                   </ModalBody>
                   <ModalFooter>
-                    <Button className="rounded-md" color="danger" variant="light" onPress={onClose}>
+                    <Button
+                      className="rounded-md"
+                      color="danger"
+                      variant="light"
+                      onPress={onClose}
+                    >
                       닫기
                     </Button>
                     <Button
@@ -138,16 +184,27 @@ function UpdateArticle() {
           <Button onPress={onOpenSave} type="button" color="secondary">
             저장
           </Button>
-          <Modal style={{fontFamily:'JalnanGothic'}} isOpen={isSaveOpen} onOpenChange={onOpenChangeSave} backdrop="Transparent">
+          <Modal
+            isOpen={isSaveOpen}
+            onOpenChange={onOpenChangeSave}
+            backdrop="Transparent"
+          >
             <ModalContent>
               {(onClose) => (
                 <>
-                  <ModalHeader className="flex flex-col gap-1">글 수정</ModalHeader>
+                  <ModalHeader className="flex flex-col gap-1">
+                    글 수정
+                  </ModalHeader>
                   <ModalBody>
                     <p>변경된 내용을 저장하시겠습니까?</p>
                   </ModalBody>
                   <ModalFooter>
-                    <Button className="rounded-md" color="danger" variant="light" onPress={onClose}>
+                    <Button
+                      className="rounded-md"
+                      color="danger"
+                      variant="light"
+                      onPress={onClose}
+                    >
                       닫기
                     </Button>
                     <Button
