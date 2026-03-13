@@ -1,18 +1,10 @@
 import { useState } from "react";
-import {
-  Input,
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Button,
-  useDisclosure,
-} from "@nextui-org/react";
 import MDEditor from "@uiw/react-md-editor";
 import axios from "axios";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import rehypeSanitize from "rehype-sanitize";
+import { Input } from "@nextui-org/react";
+import { Button, ConfirmPopup } from "../../components";
 
 function UpdateArticle() {
   const token = sessionStorage.getItem("aivle19_token");
@@ -24,16 +16,8 @@ function UpdateArticle() {
   const [content, setContent] = useState(
     location.state !== null ? location.state.content : "",
   );
-  const {
-    isOpen: isCancelOpen,
-    onOpen: onOpenCancel,
-    onOpenChange: onOpenChangeCancel,
-  } = useDisclosure();
-  const {
-    isOpen: isSaveOpen,
-    onOpen: onOpenSave,
-    onOpenChange: onOpenChangeSave,
-  } = useDisclosure();
+  const [isCancelOpen, setIsCancleOpen] = useState(false);
+  const [isSaveOpen, setIsSaveOpen] = useState(false);
   const nav = useNavigate();
 
   const onTitleHandler = (e) => {
@@ -135,91 +119,28 @@ function UpdateArticle() {
 
       <div className="flex flex-wrap gap-4 pt-5 justify-end">
         <>
-          <Button
-            onPress={onOpenCancel}
-            type="button"
-            color="secondary"
-            variant="light"
-          >
+          <Button onClick={onOpenCancel} mode="cancle">
             취소
           </Button>
-          <Modal
-            isOpen={isCancelOpen}
-            onOpenChange={onOpenChangeCancel}
-            backdrop="Transparent"
-          >
-            <ModalContent>
-              {(onClose) => (
-                <>
-                  <ModalHeader className="flex flex-col gap-1">
-                    글 수정 취소
-                  </ModalHeader>
-                  <ModalBody>
-                    <p>글 수정을 취소하시겠습니까?</p>
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button
-                      className="rounded-md"
-                      color="danger"
-                      variant="light"
-                      onPress={onClose}
-                    >
-                      닫기
-                    </Button>
-                    <Button
-                      className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                      type="button"
-                      onPress={() => onCancelHandler()}
-                      onClick={onClose}
-                    >
-                      작성 취소
-                    </Button>
-                  </ModalFooter>
-                </>
-              )}
-            </ModalContent>
-          </Modal>
+          {isCancelOpen && (
+            <ConfirmPopup
+              onCancle={() => setIsCancleOpen(false)}
+              onConfirm={onCancelHandler}
+              title="글 수정 취소"
+              message="글 수정을 취소하시겠습니까?"
+            />
+          )}
         </>
         <>
-          <Button onPress={onOpenSave} type="button" color="secondary">
-            저장
-          </Button>
-          <Modal
-            isOpen={isSaveOpen}
-            onOpenChange={onOpenChangeSave}
-            backdrop="Transparent"
-          >
-            <ModalContent>
-              {(onClose) => (
-                <>
-                  <ModalHeader className="flex flex-col gap-1">
-                    글 수정
-                  </ModalHeader>
-                  <ModalBody>
-                    <p>변경된 내용을 저장하시겠습니까?</p>
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button
-                      className="rounded-md"
-                      color="danger"
-                      variant="light"
-                      onPress={onClose}
-                    >
-                      닫기
-                    </Button>
-                    <Button
-                      className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                      onClick={onSubmitHandler}
-                      type="submit"
-                      onPress={onClose}
-                    >
-                      저장
-                    </Button>
-                  </ModalFooter>
-                </>
-              )}
-            </ModalContent>
-          </Modal>
+          <Button onClick={onOpenSave}>저장</Button>
+          {isSaveOpen && (
+            <ConfirmPopup
+              onCancle={() => setIsSaveOpen(false)}
+              onConfirm={onSubmitHandler}
+              title="글 수정"
+              message="변경된 내용을 저장하시겠습니까?"
+            />
+          )}
         </>
       </div>
     </div>
