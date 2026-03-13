@@ -5,8 +5,6 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Button,
-  Textarea,
   User,
   useDisclosure,
   Popover,
@@ -17,14 +15,15 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import MDEditor from "@uiw/react-md-editor";
 import UserProfile from "./UserProfile";
+import { Button, Input } from "../../components";
 
-function Article() {
+function Article({ initialArticleData = {} }) {
   const { postId } = useParams();
   const nav = useNavigate();
   const token = sessionStorage.getItem("aivle19_token");
   const loginUser = sessionStorage.getItem("aivle19_username");
-  const [articleData, setArticleData] = useState([]);
-  const [commentData, setCommentData] = useState([]);
+  const [articleData, setArticleData] = useState(initialArticleData);
+  const [commentData, setCommentData] = useState(initialArticleData.comments);
   const [writeComment, setWriteComment] = useState("");
   const onCommentHandler = (e) => {
     setWriteComment(e.currentTarget.value);
@@ -44,40 +43,12 @@ function Article() {
       })
       .then((response) => {
         setArticleData(response.data);
+        setCommentData(response.data.comments);
       })
       .catch((error) => {
         console.error("게시글 불러오기 실패", error);
       });
-
-    axios
-      .get(import.meta.env.VITE_API_URL + `/board/${postId}/comments/`, {
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-      })
-      .then((response) => {
-        setCommentData(response.data);
-      })
-      .catch((error) => {
-        console.error("댓글 불러오기 실패", error);
-      });
   }, [postId, token]);
-
-  const fetchComments = async () => {
-    try {
-      const response = await axios.get(
-        import.meta.env.VITE_API_URL + `/board/${postId}/comments/`,
-        {
-          headers: {
-            Authorization: `Token ${token}`,
-          },
-        },
-      );
-      setCommentData(response.data);
-    } catch (error) {
-      console.error("댓글 불러오기 실패", error);
-    }
-  };
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
@@ -274,15 +245,6 @@ function Article() {
       <hr />
 
       <div style={{ paddingTop: "40px", paddingBottom: "60px" }}>
-        <h1
-          style={{
-            fontSize: "1.3em",
-            fontWeight: "bold",
-            paddingBottom: "18px",
-          }}
-        >
-          댓글
-        </h1>
         <div
           className="w-full"
           style={{
@@ -291,12 +253,12 @@ function Article() {
             alignItems: "flex-end",
           }}
         >
-          <Textarea
-            variant="bordered"
-            radius="sm"
-            value={writeComment}
+          <Input
+            label="댓글 작성"
             onChange={onCommentHandler}
+            value={writeComment}
             placeholder="댓글을 작성하세요"
+            type="textarea"
           />
           <Button
             onClick={onSubmitHandler}
@@ -311,17 +273,14 @@ function Article() {
 
       <div>
         {commentData.map((comment) => (
-          <div
-            key={comment.comment_id}
-            style={{ paddingBottom: "30px", position: "relative" }}
-          >
+          <div key={comment.comment_id} className="p-2 relative">
             <Popover placement="left">
               <PopoverTrigger>
                 <User
                   name={comment.username}
                   description={new Date(comment.created_at).toLocaleString()}
                   avatarProps={{
-                    src: import.meta.env.VITE_API_URL + comment.profile_image,
+                    src: comment.profile_image,
                   }}
                   style={{ cursor: "pointer" }}
                 />
@@ -334,19 +293,15 @@ function Article() {
             </Popover>
 
             {editing[comment.comment_id] ? (
-              <Textarea
-                variant="bordered"
-                value={newComment}
+              <Input
+                label="댓글 수정"
                 onChange={onNewCommentHandler}
-                className="max-w"
+                value={newComment}
+                placeholder=""
+                type="textarea"
               />
             ) : (
-              <Textarea
-                isReadOnly
-                variant="bordered"
-                value={comment.comment}
-                className="max-w"
-              />
+              <div className="py-2">{comment.comment}</div>
             )}
 
             <div
