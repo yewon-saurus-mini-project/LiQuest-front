@@ -40,7 +40,7 @@ const Info = () => {
     <div>
       <div className="section w-full min-h-[100vh] flex justify-center items-center lg:gap-32 pt-[63px] bg-[var(--color-primary-500)]">
         <div className="text-white lg:p-0 px-4 py-10">
-          <div className={styles["introduce"]}>
+          <div className="font-['JalnanGothic']">
             <div className="lg:text-6xl text-4xl">LiQuest,</div>
             <div className="lg:text-4xl text-2xl lg:mt-4">
               문해력을 깨우는 모험의 시작!
@@ -86,7 +86,7 @@ const Info = () => {
       </div>
       <div className="section w-full min-h-[100vh] flex flex-col lg:flex-row justify-center items-center lg:gap-32 bg-[var(--color-primary-400)] py-10">
         <div className="text-white lg:p-0 px-4">
-          <div className={styles["introduce"]}>
+          <div className="font-['JalnanGothic']">
             <div className="lg:text-5xl text-2xl">
               <span className="border-b-3">LiQuest</span>에서
             </div>
