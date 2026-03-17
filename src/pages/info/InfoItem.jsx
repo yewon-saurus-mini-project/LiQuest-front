@@ -1,7 +1,12 @@
 import { useRef } from "react";
 import styles from "./style.module.css";
 
-const InfoItem = ({ Icon, title, describe }) => {
+const InfoItem = ({
+  iconSrc = "",
+  IconComponent = null,
+  title = "",
+  describe = "",
+}) => {
   const infoItemContainerRef = useRef();
 
   const handleMouseMoveInfoItem = (e) => {
@@ -27,7 +32,14 @@ const InfoItem = ({ Icon, title, describe }) => {
       onMouseOut={handleMouseOutInfoItem}
       className={`w-[270px] h-[480px] bg-white rounded-2xl text-center px-4 py-8 flex flex-col justify-center items-center ${styles["ani-pulse"]} hover:animate-none duration-700`}
     >
-      {Icon}
+      {iconSrc && (
+        <img
+          src={iconSrc}
+          className="w-[180px] rounded-full"
+          alt={`info item ${title} icon`}
+        />
+      )}
+      {IconComponent && IconComponent}
       <div className="text-2xl font-bold mt-6 mb-2">{title}</div>
       <div className="text-lg whitespace-pre-wrap">{describe}</div>
     </div>

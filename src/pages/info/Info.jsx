@@ -97,21 +97,27 @@ const Info = () => {
         </div>
         <div className="min-h-[100vh] flex flex-col lg:flex-row justify-center items-center lg:gap-20 gap-5">
           <InfoItem
-            Icon={<MdOutlineQuiz size={150} color="white" style={iconStyle} />}
+            IconComponent={
+              <MdOutlineQuiz size={150} color="white" style={iconStyle} />
+            }
             title={"단어 퀴즈"}
             describe={
               "잘 알고 있나요?\n익숙지 않은 어휘는 없는지\n확인해 봅시다!"
             }
           />
           <InfoItem
-            Icon={<SiFuturelearn size={150} color="white" style={iconStyle} />}
+            IconComponent={
+              <SiFuturelearn size={150} color="white" style={iconStyle} />
+            }
             title={"단어 연습장"}
             describe={
               "문해력 차이는 곧\n언어적 경험의 차이!\n단계 별 학습 사이클을 따라\n경험을 쌓아보세요."
             }
           />
           <InfoItem
-            Icon={<FaKeyboard size={150} color="white" style={iconStyle} />}
+            IconComponent={
+              <FaKeyboard size={150} color="white" style={iconStyle} />
+            }
             title={"작문해보기"}
             describe={
               "학습한 단어를 조합해\n작문해 봅시다!\nChatGPT가 확인하고\n피드백을 제공합니다."

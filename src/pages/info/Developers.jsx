@@ -82,7 +82,7 @@ const Developers = () => {
           rel="noopener noreferrer"
         >
           <InfoItem
-            Icon={<img src={image} width={180} alt={`개발자 ${name} 프로필`} />}
+            iconSrc={image}
             title={name}
             describe={
               <>
