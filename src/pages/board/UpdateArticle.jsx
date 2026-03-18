@@ -119,7 +119,7 @@ function UpdateArticle() {
 
       <div className="flex flex-wrap gap-4 pt-5 justify-end">
         <>
-          <Button onClick={onOpenCancel} mode="cancle">
+          <Button onClick={() => setIsCancleOpen(true)} mode="cancle">
             취소
           </Button>
           {isCancelOpen && (
@@ -132,7 +132,7 @@ function UpdateArticle() {
           )}
         </>
         <>
-          <Button onClick={onOpenSave}>저장</Button>
+          <Button onClick={() => setIsSaveOpen(true)}>저장</Button>
           {isSaveOpen && (
             <ConfirmPopup
               onCancle={() => setIsSaveOpen(false)}
