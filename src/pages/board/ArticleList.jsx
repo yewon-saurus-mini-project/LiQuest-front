@@ -107,7 +107,10 @@ function ArticleList({ initialArticleData = [] }) {
           style={{ textAlign: "center", alignItems: "center" }}
         >
           {(item) => (
-            <TableRow className="cell-hover" key={item.post_id}>
+            <TableRow
+              className="cursor-pointer transition-all hover:bg-[var(--color-primary-100)]"
+              key={item.post_id}
+            >
               {(columnKey) => (
                 <TableCell
                   style={
