@@ -16,7 +16,7 @@
     "axios": "^1.6.2",
     "create-react-app": "^5.0.1",
     "framer-motion": "^10.16.16",
-    "gh-pages": "^6.1.1",
+    "gh-pages": "^6.3.0",
     "jwt-decode": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -36,7 +36,8 @@
     "build": "vite build",
     "serve": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "deploy": "gh-pages -d dist"
   },
   "eslintConfig": {
     "extends": [
@@ -59,22 +60,22 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@vitejs/plugin-react": "^5.1.2",
-    "autoprefixer": "^10.4.23",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^3.4.19",
-    "vite": "^7.3.0",
-    "storybook": "^10.2.13",
-    "@storybook/react-vite": "^10.2.13",
     "@chromatic-com/storybook": "^5.0.1",
-    "@storybook/addon-vitest": "^10.2.13",
     "@storybook/addon-a11y": "^10.2.13",
     "@storybook/addon-docs": "^10.2.13",
-    "prop-types": "^15.8.1",
-    "eslint-plugin-storybook": "^10.2.13",
-    "vitest": "^4.0.16",
-    "playwright": "^1.57.0",
+    "@storybook/addon-vitest": "^10.2.13",
+    "@storybook/react-vite": "^10.2.13",
+    "@vitejs/plugin-react": "^5.1.2",
     "@vitest/browser-playwright": "^4.0.16",
-    "@vitest/coverage-v8": "^4.0.16"
+    "@vitest/coverage-v8": "^4.0.16",
+    "autoprefixer": "^10.4.23",
+    "eslint-plugin-storybook": "^10.2.13",
+    "playwright": "^1.57.0",
+    "postcss": "^8.5.6",
+    "prop-types": "^15.8.1",
+    "storybook": "^10.2.13",
+    "tailwindcss": "^3.4.19",
+    "vite": "^7.3.0",
+    "vitest": "^4.0.16"
   }
 }
