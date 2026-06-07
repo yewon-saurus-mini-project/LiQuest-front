@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "LiQuest",
+  "name": "LiQuest - 문해력을 깨우는 모험의 시작",
   "icons": [
     {
       "src": "favicon.ico",
